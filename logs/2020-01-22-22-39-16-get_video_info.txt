@@ -1,0 +1,8 @@
+get_video_info log created at 2020-01-22-22-39-16
+2020-01-22-22-39-16 Master dataframe loaded
+2020-01-22-22-39-54 Error writing to dataframe for /home/mc/dev/dfdc_train/dfdc_train_part_25/deyfgggwzx.mp4
+2020-01-22-22-39-56 Error writing to dataframe for /home/mc/dev/dfdc_train/dfdc_train_part_25/dlumllgytg.mp4
+2020-01-22-22-39-57 Error writing to dataframe for /home/mc/dev/dfdc_train/dfdc_train_part_25/dnebyzfvzt.mp4
+2020-01-22-22-39-58 Error writing to dataframe for /home/mc/dev/dfdc_train/dfdc_train_part_25/dnqnopitea.mp4
+2020-01-22-22-40-01 Error writing to dataframe for /home/mc/dev/dfdc_train/dfdc_train_part_25/drrqevuold.mp4
+2020-01-22-22-40-20 Error sampling from /home/mc/dev/dfdc_train/dfdc_train_part_25/fbsxrqasbn.mp4
