@@ -1,0 +1,2 @@
+save_face_bboxes log created at 2020-01-27-22-53-04
+2020-01-27-22-53-04 Finished

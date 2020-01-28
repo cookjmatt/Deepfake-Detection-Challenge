@@ -66,3 +66,36 @@ def detect_faces_on_video(detector, in_path, out_path, conf_thres=0.3, shrink=0.
     # Release videos
     cap.release()
     out.release()
+
+# Convert a video to numpy
+def mp4_to_npz(in_path):
+    cap = cv2.VideoCapture(in_path)
+    frames = []
+    while True:
+        ret, frame = cap.read()
+        if frame is None: break
+        frames.append(frame)
+    return np.stack(frames)
+
+# Get face bboxes for a video
+def get_face_bboxes(detector, in_path, conf_thres=0.3, max_dim=None):
+    # Get video capture and parameters
+    cap = cv2.VideoCapture(in_path)
+    width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
+    height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
+    num_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    
+    # Calculate shrink factor from max image dimension and max wanted dimension
+    shrink = 1.0
+    if max_dim is not None:
+        max_img = max(width, height)
+        if max_img > max_dim:
+            shrink = max_dim / max_img
+
+    # Get face bounding boxes
+    bboxes = []
+    for i in range(num_frames):
+        ret, frame = cap.read()
+        dets = detector.detect_face(frame, conf_thres, shrink)
+        bboxes.append(dets)
+    return bboxes
