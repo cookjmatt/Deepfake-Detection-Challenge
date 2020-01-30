@@ -25,7 +25,7 @@ for f in tqdm(files):
     
     # Get face bounding boxes
     try:
-        bboxes = get_face_bboxes(detector, f, max_dim=256)
+        bboxes = get_face_bboxes(detector, f, max_dim=512)
     except:
         msg = f'Error getting boxes for {f}'
         print(msg)
