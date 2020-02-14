@@ -1,0 +1,3 @@
+retinaface_detection log created at 2020-02-13-22-46-54
+2020-02-13-22-48-04 Error with /home/mc/dev/dfdc_train/dfdc_train_part_25/bssgfnaqow.mp4
+2020-02-13-22-48-07 Error with /home/mc/dev/dfdc_train/dfdc_train_part_25/btbepogvyl.mp4

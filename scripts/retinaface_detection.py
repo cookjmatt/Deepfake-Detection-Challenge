@@ -13,6 +13,7 @@ from Retinaface.layers.prior_box import PriorBox
 from Retinaface.utils.box_utils import decode, decode_landm
 from Retinaface.utils.py_cpu_nms import py_cpu_nms
 from Retinaface.config import cfg_mnet
+from DFDlib.Utils.logging import create_log, write_log
 
 df = pd.read_pickle('/home/mc/dev/Deepfake-Detection-Challenge/notebooks/master_dataframe_updated.pkl')
 df.set_index('file', inplace=True)
@@ -131,10 +132,14 @@ def imgs2mp4(imgs, out_file):
     out.release()
 
 out_dir = '/media/mc/2TBNVMESSD/retinaface_dets/'
+log_path = create_log('retinaface_detection')
 for in_path in tqdm(df.filepath.to_numpy()):
-    out_path = str(Path(out_dir) / Path(in_path).stem) + '.npy'
-    if os.path.exists(out_path): continue
-    frames, imgs, resize = get_frames(in_path, max_frames=75, max_dim=512)
-    imgs = preprocess_imgs(imgs)
-    dets = detect_imgs(imgs, model, cfg_mnet, resize, conf_thresh=0.5, nms_threshold=0.4)
-    np.save(out_path, dets, allow_pickle=True)
+    try:
+        out_path = str(Path(out_dir) / Path(in_path).stem) + '.npy'
+        if os.path.exists(out_path): continue
+        frames, imgs, resize = get_frames(in_path, max_frames=75, max_dim=1024)
+        imgs = preprocess_imgs(imgs)
+        dets = detect_imgs(imgs, model, cfg_mnet, resize, conf_thresh=0.5, nms_threshold=0.4)
+        np.save(out_path, dets, allow_pickle=True)
+    except:
+        write_log(log_path, f'Error with {in_path}')
